@@ -26,6 +26,16 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd )
 {
+	for (int y = 0; y < surf.GetHeight(); y++)
+	{
+		for (int x = 0; x < surf.GetWidth(); x++)
+		{
+			surf.PutPixel(x, y, Color(
+				(x - 100) * (x - 100) + (y - 100) * (y - 100),
+				(x - 200) * (x - 200) + (y - 200) * (y - 200),
+				(x - 300) * (x - 300) + (y - 300) * (y - 300) ));
+		}
+	}
 }
 
 void Game::Go()
@@ -42,4 +52,5 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	gfx.DrawSprite(200, 200, surf);
 }
